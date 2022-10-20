@@ -20,6 +20,7 @@ class ChatBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     String uid = auth.currentUser!.uid;
     var chatContents = chatData;
+    // check if the message is mine or not
     bool isMe = (uid == chatContents.extraData['senderId']);
     final decoration = BoxDecoration(
       color: isMe ? kSteelBlue : kSteelBlue.withOpacity(0.08),

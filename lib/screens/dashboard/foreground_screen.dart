@@ -88,9 +88,11 @@ class _ForegroundScreenState extends State<ForegroundScreen> {
           for (var m in room[kJoinMembers]) {
             joinMembers.add(m['name']);
           }
+          // Get the number of members joined in the room
           var memberCount = joinMembers.length;
 
           bool flag = false;
+          // check if 4 members joined in the room
           if (memberCount < 4) {
             flag = true;
           }

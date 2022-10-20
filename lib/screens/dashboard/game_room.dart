@@ -1,10 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, avoid_print, prefer_typing_uninitialized_variables
 
-//import 'package:cardgame/utility/firebase_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:cardgame/screens/messaging_screen/messaging_screen.dart';
-//import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
-//import 'package:cardgame/screens/home_screen.dart';
 
 class GameRoomScreen extends StatefulWidget {
   final roomId;

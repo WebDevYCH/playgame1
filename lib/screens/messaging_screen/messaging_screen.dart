@@ -30,9 +30,13 @@ class _MessagingScreenState extends State<MessagingScreen> {
     initStreamChatting();
   }
 
+  // Initialize the stream chat
   void initStreamChatting() async {
+    // Create a new instance of [StreamChatClient]
+    // by passing the apikey obtained from the project dashboard.
     final client = streamchat.StreamChatClient('p5ryqwtue5vz',
         logLevel: streamchat.Level.INFO);
+    // Set the current user
     await client.connectUser(
       streamchat.User(
         id: 'jamessmith',
@@ -42,13 +46,18 @@ class _MessagingScreenState extends State<MessagingScreen> {
       ),
       '''eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiamFtZXNzbWl0aCJ9.9p1f4HbDDtcQjHLXVxSiUTPM4luE-C_2c9D9Br8atmY''',
     );
+    // Creates a channel using the type `messaging` and `cardgame`.
+    // Channels are containers for holding messages between different members.
     _channel = client.channel('messaging', id: 'cardgame');
+    // Retrieves the current channel state (messages, members, read events etc.)
+    // and also ensures your current WebSocket connection listens to changes on this channel.
     await _channel.watch();
     setState(() {
       flag = false;
     });
   }
 
+  // Send the message on the channel
   void sendMessage(String message) {
     var refUser = _firestore.collection(kUserCollection);
     String uid = auth.currentUser!.uid;
@@ -66,6 +75,7 @@ class _MessagingScreenState extends State<MessagingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // After initializing stream chat, get the messages stream on the channel
     if (!flag) {
       messages = _channel.state!.messagesStream;
     }
@@ -156,8 +166,10 @@ class _MessagingScreenState extends State<MessagingScreen> {
                           AsyncSnapshot<List<streamchat.Message>?> snapshot) {
                         if (snapshot.hasData && snapshot.data != null) {
                           List<Widget> widgets = [];
+                          // Get the list of messages reversed
                           List<streamchat.Message> ds =
                               snapshot.data!.reversed.toList();
+                          // Check if the message is for the current room
                           for (var chatData in ds) {
                             if (chatData.extraData['roomId'] == widget.roomId) {
                               widgets.add(ChatBubble(

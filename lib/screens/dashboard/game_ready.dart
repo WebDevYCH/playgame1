@@ -50,7 +50,8 @@ class _GameReadyScreenState extends State<GameReadyScreen> {
               }
 
               if (snapshot.data!.docs.isEmpty) return NotFoundWidget();
-
+              // when a user enters in the room, get the members' name
+              // if the user leave the room, the user is removed from the joined members list
               List<DocumentSnapshot> ds = snapshot.data!.docs;
               for (var room in ds) {
                 joinMembers = [];
@@ -61,13 +62,14 @@ class _GameReadyScreenState extends State<GameReadyScreen> {
                   break;
                 }
               }
-              print(joinMembers);
+
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     for (var i in joinMembers) Text(i.toString()),
                     SizedBox(height: 20),
+                    // if the number of joined members is 4, "Start Game" button is enabled
                     ElevatedButton(
                         onPressed: (joinMembers.length > 3)
                             ? () => gameRoom(context)

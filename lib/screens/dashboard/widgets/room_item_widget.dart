@@ -19,7 +19,8 @@ class RoomItemWidget extends StatelessWidget {
   final firestore = FirebaseFirestore.instance;
   final FirebaseAuth auth = FirebaseAuth.instance;
   List<dynamic> joinMembers = [];
-
+  // if a user enters in the room, the user is added in the join members list
+  // and saved in the firestore
   void enterRoom(var context) async {
     var ref = firestore.collection(kRoomCollection);
     String uid = auth.currentUser!.uid;
@@ -98,7 +99,7 @@ class RoomItemWidget extends StatelessWidget {
       'Room ID: ${roomData[kRoomId]}',
       style: kGeneralTextStyle.copyWith(fontSize: 15, color: kBlack),
     );
-
+    // if the number of members in the room is less than 4, visible, else invisible
     return Visibility(
       visible: visibility,
       child: Card(

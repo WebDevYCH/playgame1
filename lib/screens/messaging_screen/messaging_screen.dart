@@ -34,21 +34,20 @@ class _MessagingScreenState extends State<MessagingScreen> {
   void initStreamChatting() async {
     // Create a new instance of [StreamChatClient]
     // by passing the apikey obtained from the project dashboard.
-    final client = streamchat.StreamChatClient('p5ryqwtue5vz',
+    final client = streamchat.StreamChatClient('t3ehwjn62bdx',
         logLevel: streamchat.Level.INFO);
     // Set the current user
     await client.connectUser(
       streamchat.User(
-        id: 'jamessmith',
-        name: 'JamesSmith',
-        image:
-            'https://getstream.io/random_png/?id=cool-shadow-7&amp;name=Cool+shadow',
+        id: 'james-smith',
+        name: 'James-Smith',
       ),
-      '''eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiamFtZXNzbWl0aCJ9.9p1f4HbDDtcQjHLXVxSiUTPM4luE-C_2c9D9Br8atmY''',
+      '''eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiamFtZXMtc21pdGgifQ.5rcm150S964bhdngUmuEB-hiQvwq9ap8STDITB9vQ7g''',
     );
     // Creates a channel using the type `messaging` and `cardgame`.
     // Channels are containers for holding messages between different members.
-    _channel = client.channel('messaging', id: 'cardgame');
+    _channel = client.channel('messaging',
+        id: 'cardgame_7452fb44-270c-4a70-856c-aa922d231f2c');
     // Retrieves the current channel state (messages, members, read events etc.)
     // and also ensures your current WebSocket connection listens to changes on this channel.
     await _channel.watch();

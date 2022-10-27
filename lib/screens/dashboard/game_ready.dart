@@ -26,6 +26,7 @@ class _GameReadyScreenState extends State<GameReadyScreen> {
     super.initState();
   }
 
+  // when it's called, navigate to the Game Room
   void gameRoom(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -70,6 +71,7 @@ class _GameReadyScreenState extends State<GameReadyScreen> {
                     for (var i in joinMembers) Text(i.toString()),
                     SizedBox(height: 20),
                     // if the number of joined members is 4, "Start Game" button is enabled
+                    // otherwise it is disabled
                     ElevatedButton(
                         onPressed: (joinMembers.length > 3)
                             ? () => gameRoom(context)

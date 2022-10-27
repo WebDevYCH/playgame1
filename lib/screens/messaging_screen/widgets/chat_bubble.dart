@@ -21,6 +21,7 @@ class ChatBubble extends StatelessWidget {
     String uid = auth.currentUser!.uid;
     var chatContents = chatData;
     // check if the message is mine or not
+    // decoration varies according to.
     bool isMe = (uid == chatContents.extraData['senderId']);
     final decoration = BoxDecoration(
       color: isMe ? kSteelBlue : kSteelBlue.withOpacity(0.08),
@@ -33,6 +34,8 @@ class ChatBubble extends StatelessWidget {
     );
 
     final textContent = Column(
+      // bubble properties according to it's mine or not
+      // alignment, date time format, sender name, bg color...
       crossAxisAlignment:
           isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       children: <Widget>[

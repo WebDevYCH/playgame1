@@ -4,13 +4,10 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cardgame/screens/auth/login_screen.dart';
 import 'package:cardgame/resources/app_colors.dart';
-//import 'package:cardgame/screens/mapsCard.dart';
-//import 'package:cardgame/screens/room.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print('==============');
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'cardgame',

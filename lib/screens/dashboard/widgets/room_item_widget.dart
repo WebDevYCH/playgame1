@@ -47,11 +47,12 @@ class RoomItemWidget extends StatelessWidget {
         });
       }
     });
-
+    // after adding the member, directed to the GameReadyScreen
     Navigator.of(context)
         .push(MaterialPageRoute(
           builder: (context) => GameReadyScreen(roomId: roomData[kRoomId]),
         ))
+        // update join members in the firestore
         .then((_) async => {
               joinMembers = [],
               await ref
@@ -101,6 +102,7 @@ class RoomItemWidget extends StatelessWidget {
     );
     // if the number of members in the room is less than 4, visible, else invisible
     return Visibility(
+      // boolean: true or flase
       visible: visibility,
       child: Card(
         color: Colors.white,

@@ -69,7 +69,7 @@ class _ForegroundScreenState extends State<ForegroundScreen> {
         topRight: Radius.circular(20.0),
       ),
     );
-
+    // display only available rooms, that is, join members less than 4
     final streamBuilder = StreamBuilder<QuerySnapshot>(
       stream: _rooms.snapshots(),
       builder: (ctx, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -78,7 +78,7 @@ class _ForegroundScreenState extends State<ForegroundScreen> {
             child: CircularProgressIndicator(),
           );
         }
-
+        // if there's no available room, room not found widget.
         if (snapshot.data!.docs.isEmpty) return NotFoundWidget();
 
         List<Widget> widgets = [];
@@ -99,7 +99,7 @@ class _ForegroundScreenState extends State<ForegroundScreen> {
           widgets.add(RoomItemWidget(
             context: context,
             roomData: room,
-            visibility: flag,
+            visibility: flag, // accoridng to this value, room visible or not.
           ));
         }
 

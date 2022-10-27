@@ -28,6 +28,7 @@ class _AddRoomScreenState extends State<AddRoomScreen> {
     });
   }
 
+  // get the room name and create a new room with that name in the firestore
   void createNewRoom() async {
     String inputRoomName = _roomNameController.text.trim();
     _roomNameController.clear();

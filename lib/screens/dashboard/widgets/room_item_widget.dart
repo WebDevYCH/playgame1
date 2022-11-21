@@ -25,7 +25,7 @@ class RoomItemWidget extends StatelessWidget {
     var ref = firestore.collection(kRoomCollection);
     String uid = auth.currentUser!.uid;
     String username = '';
-    firestore.collection(kUserCollection).doc(uid).get().then((val) {
+    await firestore.collection(kUserCollection).doc(uid).get().then((val) {
       username = val.data()![kUserName];
     });
 
